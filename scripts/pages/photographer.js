@@ -1,7 +1,7 @@
 //Récupérer l'ID du photographe
 const queryString_url_id = window.location.search;
 const searchId = new URLSearchParams(queryString_url_id);
-const productId = searchId.get('id');
+const photographerId = searchId.get('id');
 
 async function getInfosPhotographers() {
     const response = await fetch('../../data/photographers.json')
