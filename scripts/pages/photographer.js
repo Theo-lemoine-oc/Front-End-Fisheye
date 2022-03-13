@@ -1,27 +1,31 @@
+//Récupérer l'ID du photographe
+const queryString_url_id = window.location.search;
+const searchId = new URLSearchParams(queryString_url_id);
+const productId = searchId.get('id');
+
 async function getInfosPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
     const response = await fetch('../../data/photographers.json')
     const photographers = await response.json();
     return photographers.photographers;
-    // et bien retourner le tableau photographers seulement une fois
+
     return ({
         photographers: [...photographers, ...photographers, ...photographers]
     })
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographes-infos");
+    const photographersSection = document.querySelector(".photograph-header");
 
     photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+        const photographerModel = picturePhotographerFactory(photographer);
+        const picturePhotographers = photographerModel.getPicturePhotographers();
+        photographersSection.appendChild(picturePhotographers);
     });
 };
 
 async function init() {
     // Récupère les datas des photographes
-    const photographers = await getPhotographers();
+    const photographers = await getInfosPhotographers();
     displayData(photographers);
 };
 
