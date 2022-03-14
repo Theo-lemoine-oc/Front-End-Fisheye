@@ -6,15 +6,27 @@ function formFactory(data) {
         divForm.classList.add('modal');
         divForm.innerHTML =
             `<header>
-                <h2 id="contact-me">Contactez-moi</h2>
+                <h2 id="contact-me">Contactez-moi ${ name }</h2>
                 <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
             <form>
                 <div>
                     <label>Prénom</label>
-                    <input />
+                    <input required />
                 </div>
-                <button class="contact_button">Envoyer</button>
+                <div>
+                    <label>Nom</label>
+                    <input required />
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input required />
+                </div>
+                <div>
+                    <label>Votre message</label>
+                    <textarea required></textarea>
+                </div>
+                <button class="contact_button" type="submit">Envoyer</button>
             </form>`;
 
         return (divForm);

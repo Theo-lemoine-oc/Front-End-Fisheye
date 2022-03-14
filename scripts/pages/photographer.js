@@ -6,9 +6,16 @@ const photographerId = searchId.get('id');
 async function getInfosPhotographers(type) {
     const response = await fetch('../../data/photographers.json')
     const photographers = await response.json();
-    if (type == 'photographer') return photographers.photographers
-    else if (type == 'media') return photographers.media
-    else return 'error'
+    switch (type) {
+        case 'photographer':
+            return photographers.photographers;
+            break;
+        case 'media':
+            return photographers.media;
+            break;
+        default:
+            return 'error';
+    }
 }
 
 async function displayDataPhotographers(photographers, medias) {

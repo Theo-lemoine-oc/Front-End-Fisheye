@@ -16,5 +16,5 @@ function picturePhotographerFactory(data) {
             <img src="${picture}" alt="Image du photographe">`;
         return (section);
     }
-    return { name, picture, getPicturePhotographers }
+    return { getPicturePhotographers }
 }
