@@ -13,7 +13,11 @@ function picturePhotographerFactory(data) {
                 <p class="photographer_infos_tagline">${tagline}</p>
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <img src="${picture}" alt="Image du photographe">`;
+            <img src="${picture}" alt="Image du photographe">
+            <div class="bottom-informations">
+                <p>297 081 ❤</p>
+                <p>${price}€/jour</p>
+            </div>`;
         return (section);
     }
     return { getPicturePhotographers }
