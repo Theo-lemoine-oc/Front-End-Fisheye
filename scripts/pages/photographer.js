@@ -3,30 +3,31 @@ const queryString_url_id = window.location.search;
 const searchId = new URLSearchParams(queryString_url_id);
 const photographerId = searchId.get('id');
 
-async function getInfosPhotographers() {
+async function getInfosPhotographers(type) {
     const response = await fetch('../../data/photographers.json')
     const photographers = await response.json();
-    return photographers.photographers;
-
-    return ({
-        photographers: [...photographers, ...photographers, ...photographers]
-    })
+    if (type == 'photographer') return photographers.photographers
+    else if (type == 'media') return photographers.media
+    else return 'error'
 }
 
-async function displayData(photographers) {
+async function displayDataPhotographers(photographers, medias) {
     const photographersSection = document.querySelector(".photograph-header");
 
     photographers.forEach((photographer) => {
-        const photographerModel = picturePhotographerFactory(photographer);
-        const picturePhotographers = photographerModel.getPicturePhotographers();
-        photographersSection.appendChild(picturePhotographers);
+        if (photographer.id == photographerId) {
+            const photographerModel = picturePhotographerFactory(photographer);
+            const picturePhotographers = photographerModel.getPicturePhotographers();
+            photographersSection.appendChild(picturePhotographers);
+        }
     });
 };
 
 async function init() {
     // Récupère les datas des photographes
-    const photographers = await getInfosPhotographers();
-    displayData(photographers);
+    const photographers = await getInfosPhotographers('photographer');
+    const medias = await getInfosPhotographers('media');
+    displayDataPhotographers(photographers, medias);
 };
 
 init();
