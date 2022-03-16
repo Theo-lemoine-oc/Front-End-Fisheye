@@ -1,7 +1,7 @@
 //Récupérer l'ID du photographe
 const queryString_url_id = window.location.search;
 const searchId = new URLSearchParams(queryString_url_id);
-const photographerId = searchId.get('id');
+const getPhotographerId = searchId.get('id');
 
 async function getInfosPhotographers(type) {
     const response = await fetch('../../data/photographers.json')
@@ -18,11 +18,11 @@ async function getInfosPhotographers(type) {
     }
 }
 
-async function displayDataPhotographers(photographers, medias) {
+async function displayDataPhotographers(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
 
     photographers.forEach((photographer) => {
-        if (photographer.id == photographerId) {
+        if (photographer.id == getPhotographerId) {
             const photographerModel = picturePhotographerFactory(photographer);
             const picturePhotographers = photographerModel.getPicturePhotographers();
             photographersSection.appendChild(picturePhotographers);
@@ -30,11 +30,24 @@ async function displayDataPhotographers(photographers, medias) {
     });
 };
 
+async function displayDataImages(medias) {
+    const imagesSection = document.querySelector(".photograph-images");
+
+    medias.forEach((media) => {
+        if (media.photographerId == getPhotographerId) {
+            const imageModel = imagePhotographerFactory(media);
+            const imagePhotographer = imageModel.getImagePhotographers();
+            imagesSection.appendChild(imagePhotographer);
+        }
+    });
+};
+
 async function init() {
-    // Récupère les datas des photographes
+    // Récupère les datas des photographes et des médias
     const photographers = await getInfosPhotographers('photographer');
     const medias = await getInfosPhotographers('media');
-    displayDataPhotographers(photographers, medias);
+    displayDataPhotographers(photographers);
+    displayDataImages(medias);
 };
 
 init();

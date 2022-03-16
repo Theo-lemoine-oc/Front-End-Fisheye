@@ -8,7 +8,7 @@ async function displayDataPhotographersForm(photographers) {
     const formSection = document.getElementById("contact_modal");
 
     photographers.forEach((photographer) => {
-        if (photographer.id == photographerId) {
+        if (photographer.id == getPhotographerId) {
             const formModel = formFactory(photographer);
             const formContact = formModel.contactForm();
             formSection.appendChild(formContact);
