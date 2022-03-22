@@ -18,6 +18,7 @@ async function getInfosPhotographers(type) {
     }
 }
 
+// Display photographers
 async function displayDataPhotographers(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
 
@@ -30,14 +31,24 @@ async function displayDataPhotographers(photographers) {
     });
 };
 
-async function displayDataImages(medias) {
+// Display medias
+async function displayDataMedias(medias) {
     const imagesSection = document.querySelector(".photograph-images");
 
     medias.forEach((media) => {
         if (media.photographerId == getPhotographerId) {
-            const imageModel = imagePhotographerFactory(media);
-            const imagePhotographer = imageModel.getImagePhotographers();
-            imagesSection.appendChild(imagePhotographer);
+            // if media his a image
+            if (media.hasOwnProperty('image')) {
+                const imageModel = imagePhotographerFactory(media);
+                const imagePhotographer = imageModel.getImagePhotographers();
+                imagesSection.appendChild(imagePhotographer);
+            }
+            // if media his a video
+            else if (media.hasOwnProperty('video')) {
+                const videoModel = videoPhotographerFactory(media);
+                const videoPhotographer = videoModel.getVideoPhotographers();
+                imagesSection.appendChild(videoPhotographer);
+            }
         }
     });
 };
@@ -47,7 +58,7 @@ async function init() {
     const photographers = await getInfosPhotographers('photographer');
     const medias = await getInfosPhotographers('media');
     displayDataPhotographers(photographers);
-    displayDataImages(medias);
+    displayDataMedias(medias);
 };
 
 init();
