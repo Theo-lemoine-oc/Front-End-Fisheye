@@ -18,6 +18,11 @@ header img {
     margin-top: 1rem;
 }
 
+#main {
+    margin-right: 6rem;
+    margin-left: 6rem;
+}
+
 #contact_modal {
     display: none;
     position: absolute;
@@ -30,7 +35,6 @@ header img {
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
 }
 
 .infos-photographer {
@@ -171,7 +175,6 @@ form textarea {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding: 6rem;
 }
 
 .medias-photographer {
@@ -203,4 +206,19 @@ form textarea {
 
 .medias-photographer .red-likes {
     color: #901C1C;
+}
+
+
+/* Filters */
+
+.filters {
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.filters label {
+    margin-right: 1rem;
 }
