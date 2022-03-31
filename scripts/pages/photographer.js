@@ -1,7 +1,8 @@
 //Récupérer l'ID du photographe
 const queryString_url_id = window.location.search;
 const searchId = new URLSearchParams(queryString_url_id);
-const getPhotographerId = searchId.get('id');
+const getPhotographerId = parseInt(searchId.get('id'));
+
 
 async function getInfosPhotographers(type) {
     const response = await fetch('../../data/photographers.json')
@@ -35,18 +36,16 @@ async function displayDataPhotographers(photographers) {
 async function displayDataMedias(medias) {
     const imagesSection = document.querySelector(".photograph-images");
 
-    const Filter = new SorterForm(medias);
+    const mediaPhotographer = medias.filter(media => {
+        return media.photographerId === getPhotographerId;
+    })
+
+    const Filter = new SorterForm(mediaPhotographer);
     Filter.render();
 
-    medias.forEach((media) => {
-        if (media.photographerId == getPhotographerId) {
-            // if media his a image
-            const Template = new ImageFactory(new MediaCard(media));
-            imagesSection.appendChild(
-                Template.createMediaCard()
-            )
-
-        }
+    mediaPhotographer.forEach((media) => {
+        // if media his a image
+        imagesSection.appendChild(new ImageFactory(media).createMediaCard())
     });
 };
 

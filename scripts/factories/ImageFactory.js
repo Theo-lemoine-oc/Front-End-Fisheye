@@ -1,5 +1,9 @@
+let data = "";
 class ImageFactory {
     constructor(data) {
-        return new Media(data);
+        this.data = data;
+    }
+    createMediaCard() {
+        return new MediaCard(this.data).createMediaCard();
     }
 }

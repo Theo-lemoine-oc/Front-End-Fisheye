@@ -4,16 +4,24 @@ class ProxyRatingSorter {
     }
 
     async sort(medias, property) {
-        const cachedResult = this.cache.find(elt => elt.key == property);
+        console.log(this.cache)
+        const cachedResult = this.cache.find(elt => {
+            console.log(elt)
+            console.log(property)
+            return elt.key == property
+        });
 
+        console.log(cachedResult)
         if (cachedResult) {
-            console.log('get from cache');
             return cachedResult;
         }
 
         const data = await RatingSorterApi.sorter(medias, property);
+        console.log(data)
 
+        console.log(this.cache)
         this.cache.push(data);
+        console.log(this.cache)
         return data;
     }
 }

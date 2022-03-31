@@ -14,6 +14,7 @@ class SorterForm {
 
         if (!!sorter) {
             const sorterData = await this.ProxyRatingSorter.sort(this.Medias, sorter);
+            console.log(sorterData)
 
             const sorterMedias = sorterData.data
 
@@ -45,8 +46,8 @@ class SorterForm {
     render() {
         const sorterForm =
             `
-            <form action="#" method="POST" class="filter-form" id="filters">
-                <label for="filter-select">Triez par date de sortie : </label>
+            <form action="#" method="POST" class="filters" id="filters">
+                <label for="filter">Triez par date de sortie : </label>
                 <select name="filter" id="filter">
                     <option value="popularity">Popularité</option>
                     <option value="date">Date</option>

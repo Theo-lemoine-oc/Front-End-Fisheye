@@ -23,11 +23,11 @@ class Media {
     }
 
     get image() {
-        return `/assets/photographers/${this._image}`
+        return this._image
     }
 
     get video() {
-        return `/assets/photographers/${this._video}`
+        return this._video
     }
 
     get likes() {
