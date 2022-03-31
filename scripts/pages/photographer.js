@@ -35,20 +35,17 @@ async function displayDataPhotographers(photographers) {
 async function displayDataMedias(medias) {
     const imagesSection = document.querySelector(".photograph-images");
 
+    const Filter = new SorterForm(medias);
+    Filter.render();
+
     medias.forEach((media) => {
         if (media.photographerId == getPhotographerId) {
             // if media his a image
-            if (media.hasOwnProperty('image')) {
-                const imageModel = imagePhotographerFactory(media);
-                const imagePhotographer = imageModel.getImagePhotographers();
-                imagesSection.appendChild(imagePhotographer);
-            }
-            // if media his a video
-            else if (media.hasOwnProperty('video')) {
-                const videoModel = videoPhotographerFactory(media);
-                const videoPhotographer = videoModel.getVideoPhotographers();
-                imagesSection.appendChild(videoPhotographer);
-            }
+            const Template = new ImageFactory(new MediaCard(media));
+            imagesSection.appendChild(
+                Template.createMediaCard()
+            )
+
         }
     });
 };
