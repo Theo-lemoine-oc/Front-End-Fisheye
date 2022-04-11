@@ -43,11 +43,18 @@ async function displayDataMedias(medias) {
     const Filter = new SorterForm(mediaPhotographer);
     Filter.render();
 
+    const likeCalcul = new LikesCalcul();
+
     mediaPhotographer.forEach((media) => {
         // if media his a image
         imagesSection.appendChild(new ImageFactory(media).createMediaCard())
+
+        likeCalcul.incrementLikes(media.likes);
     });
+
+    likeCalcul.writeLikes();
 };
+
 
 async function init() {
     // Récupère les datas des photographes et des médias

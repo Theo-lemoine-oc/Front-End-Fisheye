@@ -1,10 +1,13 @@
 function picturePhotographerFactory(data) {
-    const { name, city, country, tagline, price, id, portrait } = data;
+    const { name, city, country, tagline, portrait, price } = data;
 
     const picture = `assets/photographers/portraits/${portrait}`;
 
+
     function getPicturePhotographers() {
         const section = document.createElement('section');
+        const salaryPhotographer = document.getElementById('salary');
+
         section.classList.add('infos-photographer');
         section.innerHTML =
             `<div>
@@ -13,11 +16,11 @@ function picturePhotographerFactory(data) {
                 <p class="photographer_infos_tagline">${tagline}</p>
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <img src="${picture}" alt="Image du photographe">
-            <div class="bottom-informations">
-                <p>297 081 ❤</p>
-                <p>${price}€/jour</p>
-            </div>`;
+            <img src="${picture}" alt="Image du photographe">`;
+
+        //add salary photographer on bottom informations
+        salaryPhotographer.textContent = `${price}€/jours`;
+
         return (section);
     }
     return { getPicturePhotographers }

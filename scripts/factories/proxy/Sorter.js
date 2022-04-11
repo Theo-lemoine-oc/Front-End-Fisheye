@@ -47,7 +47,7 @@ class SorterForm {
         const sorterForm =
             `
             <form action="#" method="POST" class="filters" id="filters">
-                <label for="filter">Triez par date de sortie : </label>
+                <label for="filter">Triez par</label>
                 <select name="filter" id="filter">
                     <option value="popularity">Popularité</option>
                     <option value="date">Date</option>

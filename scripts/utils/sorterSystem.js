@@ -40,7 +40,7 @@ class RatingSorterApi {
                 console.log(result)
                 resolve(result)
 
-            }, 3000)
+            }, 500)
         })
     }
 }
