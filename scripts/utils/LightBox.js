@@ -37,15 +37,24 @@ class LightBox {
      * @param {string} url Pictures URLs
      */
     loadImage(url) {
+        const type = url.includes('.mp4');
+        if (type == null) type = false;
         this.url = null;
-        const image = new Image();
         const container = document.querySelector('.lightbox-container');
-        container.innerHTML = '';
-        image.onload = () => {
-            container.appendChild(image);
-            this.url = url;
+        if (type) {
+            container.innerHTML = `
+            <video controls autoplay>
+                <source src="${url}" type=video/mp4>
+            </video>`;
+        } else {
+            const image = new Image();
+            container.innerHTML = '';
+            image.onload = () => {
+                container.appendChild(image);
+                this.url = url;
+            }
+            image.src = url;
         }
-        image.src = url;
     }
 
 
@@ -117,13 +126,27 @@ class LightBox {
     buildDOM(url) {
         const dom = document.createElement('div');
         dom.classList.add('lightbox');
-        dom.innerHTML = `
+        const type = url.includes('.mp4');
+        if (type) {
+            dom.innerHTML = `
+            <button class="lightbox-close"></button>
+            <button class="lightbox-next"></button>
+            <button class="lightbox-prev"></button>
+            <div class="lightbox-container">
+                <video controls autoplay>
+                    <source src="${url}" type=video/mp4>
+                </video>
+            </div>`;
+        } else {
+            dom.innerHTML = `
             <button class="lightbox-close"></button>
             <button class="lightbox-next"></button>
             <button class="lightbox-prev"></button>
             <div class="lightbox-container">
                 <img src="${url}" alt="">
             </div>`;
+        }
+
 
         // Close lightbox
         dom.querySelector('.lightbox-close').addEventListener('click',

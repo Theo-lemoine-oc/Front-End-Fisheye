@@ -297,7 +297,8 @@ form textarea {
     opacity: 1;
 }
 
-.lightbox-container img {
+.lightbox-container img,
+.lightbox-container video {
     width: 100%;
     height: 100vh;
     object-fit: contain;
