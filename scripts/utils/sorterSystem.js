@@ -1,6 +1,5 @@
 class RatingSorterApi {
     static async sorter(data, property) {
-        console.log("Get from compute")
 
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -31,13 +30,10 @@ class RatingSorterApi {
                 });
 
                 const dataSort = data;
-                console.log(dataSort)
                 const result = {
                     key: property,
                     data: dataSort
                 }
-
-                console.log(result)
                 resolve(result)
 
             }, 500)

@@ -36,6 +36,7 @@ class SorterForm {
             .addEventListener('change', e => {
                 const sorter = e.target.value
                 this.sorterMedias(sorter)
+                LightBox.init();
             })
     }
 
