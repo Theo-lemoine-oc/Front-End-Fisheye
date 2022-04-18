@@ -37,15 +37,17 @@ class LightBox {
      * @param {string} url Pictures URLs
      */
     loadImage(url) {
-        const type = url.includes('.mp4');
-        if (type == null) type = false;
-        this.url = null;
+        let type = url.includes('.mp4');
+        if (type == null) {
+            type = false;
+        }
         const container = document.querySelector('.lightbox-container');
         if (type) {
+            this.url = url;
             container.innerHTML = `
-            <video controls autoplay>
-                <source src="${url}" type=video/mp4>
-            </video>`;
+        <video controls autoplay>
+            <source src="${url}" type=video/mp4>
+        </video>`;
         } else {
             const image = new Image();
             container.innerHTML = '';
