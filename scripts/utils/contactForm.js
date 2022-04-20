@@ -1,13 +1,13 @@
 function displayModal(e) {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
-    document.addEventListener('keyUp', onKey(e))
+    document.addEventListener('keyup', onKey)
 }
 
 function closeModal(e) {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
-    document.removeEventListener('keyup', onKey(e));
+    document.removeEventListener('keyup', onKey);
 }
 
 function onKey(e) {
