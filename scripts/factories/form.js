@@ -9,7 +9,7 @@ function formFactory(data) {
                 <h2 id="contact-me">Contactez-moi ${ name }</h2>
                 <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
-            <form>
+            <form class="formContact">
                 <div>
                     <label>Prénom</label>
                     <input required />

@@ -248,7 +248,8 @@ form textarea {
     transition: opacity .3s;
 }
 
-.lightbox.fadeOut {
+.lightbox.fadeOut,
+.formContact.fadeOut {
     opacity: 0;
 }
 
